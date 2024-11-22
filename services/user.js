@@ -35,4 +35,15 @@ async function updateUser(userParams) {
   }
 }
 
-module.exports = { createUser, updateUser };
+async function deleteUser(userParams) {
+  const { id } = userParams;
+  try {
+    const deletedUser = await mongooseUser.findByIdAndDelete(id);
+    console.log(deletedUser);
+    return true;
+  } catch (error) {
+    console.error("An error occurred while deleting the user:", error);
+    return false;
+  }
+}
+module.exports = { createUser, updateUser, deleteUser };

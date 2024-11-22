@@ -13,7 +13,7 @@ const userController = {
   },
   deleteUser: async (req, res) => {
     try {
-      const response = await userService.createUser(req.body);
+      const response = await userService.deleteUser(req.params);
       if (response) {
         res.status(200).send({ response: "User registered successfully" });
       } else {
